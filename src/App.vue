@@ -1,17 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1 class="mb-6 font-bold text-xl">DIY Form Validation in Vue 3</h1>
+    <BaseForm title="Little Little Form" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BaseForm from "./components/BaseForm.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    BaseForm
   }
-}
+};
 </script>
 
 <style>
