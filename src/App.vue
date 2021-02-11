@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mb-6 font-bold text-xl">DIY Form Validation in Vue 3</h1>
+    <h1 class="font-bold text-xl md:text-3xl text-center">DIY Form Validation in Vue 3</h1>
     <BaseForm title="Little Little Form" />
   </div>
 </template>
@@ -21,7 +21,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
