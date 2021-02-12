@@ -8,13 +8,23 @@
         class="flex flex-col"
         @submit.prevent="submitForm"
         autocomplete="off"
-        :disabled="isFormValid"
       >
         <div class="form-group">
-          <InputName @validationResponse="checkIfFormValid" v-model="name" />
+          <InputName
+            @nameValidationResponse="checkIfNameValid"
+            v-model="name"
+          />
         </div>
 
-        <button :class="'form-button' + ' ' + buttonClass" type="submit">
+        <div class="form-group">
+          <InputAge @ageValidationResponse="checkIfAgeValid" v-model="name" />
+        </div>
+
+        <button
+          :disabled="!isFormValid"
+          :class="'form-button' + ' ' + buttonClass"
+          type="submit"
+        >
           Submit
         </button>
       </form>
@@ -26,43 +36,46 @@
 import { ref, computed } from "vue";
 
 import InputName from "@/components/InputName";
+import InputAge from "@/components/InputAge";
 
 export default {
   name: "BaseForm",
   setup() {
     const name = ref("");
     const email = ref("");
-    let validForm = ref(false)
+    let validName = ref(false);
+    let validAge = ref(false);
 
     const isFormValid = computed(() => {
-          return validForm.value
+      return validName.value === true && validAge.value === true;
     });
 
     const buttonClass = computed(() => {
       if (isFormValid.value) {
         return "";
-      } else { 
-        return 'opacity-50'
-      }
-    })   
-
-    function checkIfFormValid(errors) {
-      // Check if there are any errors
-      if (errors[0] && errors[0].length) {
-        console.log("yes");
-        validForm.value = false;
-        console.log(validForm.value )
-
       } else {
-        validForm.value = true;
-        console.log("no");
-        console.log(validForm.value )
+        return "opacity-50";
+      }
+    });
+
+    function checkIfNameValid(errors) {
+      if (errors[0] === null) {
+        validName.value = true;
+      } else {
+        validName.value = false;
+      }
+    }
+
+    function checkIfAgeValid(errors) {
+      if (errors[0] === null) {
+        validAge.value = true;
+      } else {
+        validAge.value = false;
       }
     }
 
     function submitForm() {
-      // submit to backend or whatever you like
-      if (validForm.value === true) {
+      if (isFormValid.value) {
         console.log("🗒️ Form Submitted", this.form);
       } else {
         console.log("❌ Invalid Form");
@@ -71,7 +84,8 @@ export default {
 
     return {
       buttonClass,
-      checkIfFormValid,
+      checkIfAgeValid,
+      checkIfNameValid,
       email,
       isFormValid,
       name,
@@ -82,8 +96,9 @@ export default {
     title: String
   },
   components: {
-    InputName
-  },
+    InputName,
+    InputAge
+  }
 };
 </script>
 

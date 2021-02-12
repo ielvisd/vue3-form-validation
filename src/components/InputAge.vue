@@ -1,7 +1,7 @@
 <template>
-  <label class="label" for="name">
-    Name:
-    <input type="text" name="name" class="input-field" v-model="input" />
+  <label class="label" for="age">
+    Age:
+    <input type="number" name="age" class="input-field" v-model="input" />
         <ul v-for="(error, i) in errors" :key="i">
             <li v-if="error">{{ error }}</li>
         </ul>
@@ -10,7 +10,7 @@
 
 <script>
 import useInputValidator from "@/features/useInputValidator.js";
-import { nameIsValid } from "@/validators";
+import { ageIsValid } from "@/validators";
 
 
 export default {
@@ -20,10 +20,10 @@ export default {
 
   setup (props, { emit }) {
     const { input, errors } = useInputValidator(
-      props.value, [nameIsValid(input)],
+      props.value, [ageIsValid(input)],
       value => {
         emit("input", value)
-        emit("nameValidationResponse", errors._rawValue);
+        emit("ageValidationResponse", errors._rawValue);
       },
     );
 
