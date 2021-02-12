@@ -21,9 +21,9 @@ export default {
     // and an onValidate function 
     const { input, errors } = useInputValidator(
       props.value, [nameIsValid(input)],
-      // eslint-disable-next-line no-unused-vars
       value => {
-        emit("nameValidationResponse", value, 'name', errors.value);
+        // Emit 
+        emit("validationResponse", value, 'name', errors.value);
       },
     );
 

@@ -11,13 +11,13 @@
       >
         <div class="form-group">
           <InputName
-            @nameValidationResponse="checkIfValidField"
+            @validationResponse="checkIfValidField"
             v-model="name"
           />
         </div>
 
         <div class="form-group">
-          <InputAge @ageValidationResponse="checkIfValidField" v-model="name" />
+          <InputAge @validationResponse="checkIfValidField" v-model="name" />
         </div>
 
         <button

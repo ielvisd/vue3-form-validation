@@ -19,7 +19,7 @@ export default {
     const { input, errors } = useInputValidator(
       props.value, [ageIsValid(input)],
       value => {
-        emit("ageValidationResponse", value, 'age', errors.value);
+        emit("validationResponse", value, 'age', errors.value);
       },
     );
 
