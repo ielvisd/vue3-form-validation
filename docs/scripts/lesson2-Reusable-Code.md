@@ -9,4 +9,3 @@
 
 # Show off functionality with 2 inputs
 > Ok, looks like that was easy. We now have 2 inputs, each with unique validation condition. Looks like we are making good progress. 
-
