@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 class="font-bold text-xl md:text-3xl text-center">DIY Form Validation in Vue 3</h1>
-    <BaseForm title="Little Little Form" />
+    <h1 class="font-bold text-xl md:text-3xl text-center">DIY Form Validation in Vue 2</h1>
+    <BaseForm title="Little Form" />
   </div>
 </template>
 
