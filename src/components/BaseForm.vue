@@ -8,13 +8,14 @@
         class="flex flex-col"
         @submit.prevent="submitForm"
         autocomplete="off"
+        :disabled="isFormValid"
       >
         <div class="form-group">
-          <InputName @validationResponse="checkIfFormValid2" v-model="name" />
+          <InputName @validationResponse="checkIfFormValid" v-model="name" />
         </div>
 
         <button :class="'form-button' + ' ' + buttonClass" type="submit">
-          Subdfgsemit
+          Submit
         </button>
       </form>
     </section>
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 import InputName from "@/components/InputName";
 
@@ -31,56 +32,51 @@ export default {
   setup() {
     const name = ref("");
     const email = ref("");
-    // eslint-disable-next-line no-unused-vars
-    let validForm2 = ref(false)
-    // eslint-disable-next-line no-unused-vars
+    let validForm = ref(false)
 
-    // eslint-disable-next-line no-unused-vars
-    function checkIfFormValid2(errors) {
-      // Check if there are any errors
-      if (errors[0] && errors[0].length) {
-        console.log("yes");
-        validForm2.value = false;
-                console.log(validForm2.value )
+    const isFormValid = computed(() => {
+          return validForm.value
+    });
 
-      } else {
-        validForm2.value = true;
-        console.log("no");
-        console.log(validForm2.value )
-      }
-      console.log("errors.value", errors._rawValue);
-      console.log("enlarging text", errors, errors[0]);
-    }
-
-
-
-    function onSubmit() {
-      // submit to backend or whatever you like
-      console.log(name.value, email.value);
-    }
-
-    return {
-      name,
-      email,
-      validForm2,
-      checkIfFormValid2,
-      onSubmit
-    };
-  },
-  data() {
-    return { validForm: false };
-  },
-  computed: {
-    isFormValid() {
-      return this.validForm;
-    },
-    buttonClass() {
-      if (this.validForm2) {
+    const buttonClass = computed(() => {
+      if (isFormValid.value) {
         return "";
       } else { 
         return 'opacity-50'
       }
-    },
+    })   
+
+    function checkIfFormValid(errors) {
+      // Check if there are any errors
+      if (errors[0] && errors[0].length) {
+        console.log("yes");
+        validForm.value = false;
+        console.log(validForm.value )
+
+      } else {
+        validForm.value = true;
+        console.log("no");
+        console.log(validForm.value )
+      }
+    }
+
+    function submitForm() {
+      // submit to backend or whatever you like
+      if (validForm.value === true) {
+        console.log("🗒️ Form Submitted", this.form);
+      } else {
+        console.log("❌ Invalid Form");
+      }
+    }
+
+    return {
+      buttonClass,
+      checkIfFormValid,
+      email,
+      isFormValid,
+      name,
+      submitForm
+    };
   },
   props: {
     title: String
@@ -88,37 +84,6 @@ export default {
   components: {
     InputName
   },
-  methods: {
-    submitForm() {
-      console.log("submitForm");
-      console.log(this.$refs);
-      // console.log(this.setup.ref)
-      console.log("submitForm", this.name, this.mail);
-
-      // const formIsvalid = this.nameIsValid && this.ageIsvalid;
-
-      // if (formIsvalid) {
-      //   console.log("🗒️ Form Submitted", this.form);
-      // } else {
-      //   console.log("❌ Invalid Form");
-      // }
-    },
-    checkIfFormValid(errors) {
-      // Check if there are any errors
-      if (errors[0] && errors[0].length) {
-        console.log("yes");
-        this.validForm = false;
-                console.log(this.validForm )
-
-      } else {
-        this.validForm = true;
-        console.log("no");
-        console.log(this.validForm )
-      }
-      console.log("errors.value", errors._rawValue);
-      console.log("enlarging text", errors, errors[0]);
-    }
-  }
 };
 </script>
 
