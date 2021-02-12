@@ -46,8 +46,9 @@
 
 > The value of this `input` variable will be something we'll return from a to-be-defined composition function `useInputValidator`. This function will handle all the common validation logic in our form.
 
-> We'll pass in the `value` prop to this method (currently undefined), this will be our starting value, and the second argument will be a callback function that returns the validated input value. Let's use this callback to emit this input as an event and fulfill the v-model contract.
+> We'll pass in the `value` prop to this method (currently undefined), this will be our starting value, and the second argument will be a callback function that returns the validated input value. Let's use this callback to emit the input and any errors as an event. 
 
 ## Input Validator
 
 
+## Validators
