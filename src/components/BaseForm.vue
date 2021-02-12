@@ -10,7 +10,7 @@
         autocomplete="off"
       >
         <div class="form-group">
-          <InputName @validationResponse="checkIfFormValid" v-model="name" />
+          <InputName @validationResponse="checkIfFormValid2" v-model="name" />
         </div>
 
         <button :class="'form-button' + ' ' + buttonClass" type="submit">
@@ -32,6 +32,28 @@ export default {
     const name = ref("");
     const email = ref("");
     // eslint-disable-next-line no-unused-vars
+    let validForm2 = ref(false)
+    // eslint-disable-next-line no-unused-vars
+
+    // eslint-disable-next-line no-unused-vars
+    function checkIfFormValid2(errors) {
+      // Check if there are any errors
+      if (errors[0] && errors[0].length) {
+        console.log("yes");
+        validForm2.value = false;
+                console.log(validForm2.value )
+
+      } else {
+        validForm2.value = true;
+        console.log("no");
+        console.log(validForm2.value )
+      }
+      console.log("errors.value", errors._rawValue);
+      console.log("enlarging text", errors, errors[0]);
+    }
+
+
+
     function onSubmit() {
       // submit to backend or whatever you like
       console.log(name.value, email.value);
@@ -40,6 +62,8 @@ export default {
     return {
       name,
       email,
+      validForm2,
+      checkIfFormValid2,
       onSubmit
     };
   },
@@ -51,7 +75,7 @@ export default {
       return this.validForm;
     },
     buttonClass() {
-      if (this.validForm) {
+      if (this.validForm2) {
         return "";
       } else { 
         return 'opacity-50'
