@@ -6,3 +6,6 @@
 
 ### Lesson 2
 
+- **Title**: Refactoring From Vue 2 to Vue 3 - Component Setup
+- **Description**: Setup a new component, remove Vue 2 Options API from it & fix styling bug that arises.
+- **Link**: https://youtu.be/LCTknmqPTT4
