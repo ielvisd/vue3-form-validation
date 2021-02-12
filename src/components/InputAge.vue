@@ -14,16 +14,12 @@ import { ageIsValid } from "@/validators";
 
 
 export default {
-  name: "InputName",
-
-  emits: ['input', 'validationResponse'],
-
+  name: "InputAge",
   setup (props, { emit }) {
     const { input, errors } = useInputValidator(
       props.value, [ageIsValid(input)],
       value => {
-        emit("input", value)
-        emit("ageValidationResponse", errors._rawValue);
+        emit("ageValidationResponse", value, 'age', errors.value);
       },
     );
 

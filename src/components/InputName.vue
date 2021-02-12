@@ -15,15 +15,15 @@ import { nameIsValid } from "@/validators";
 
 export default {
   name: "InputName",
-
-  emits: ['input', 'validationResponse'],
-
   setup (props, { emit }) {
+    // props.value is undefined to start
+    // useInputValidator takes three inputs, startVal, an array of validators
+    // and an onValidate function 
     const { input, errors } = useInputValidator(
       props.value, [nameIsValid(input)],
+      // eslint-disable-next-line no-unused-vars
       value => {
-        emit("input", value)
-        emit("nameValidationResponse", errors._rawValue);
+        emit("nameValidationResponse", value, 'name', errors.value);
       },
     );
 

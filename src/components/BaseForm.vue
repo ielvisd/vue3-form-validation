@@ -11,13 +11,13 @@
       >
         <div class="form-group">
           <InputName
-            @nameValidationResponse="checkIfNameValid"
+            @nameValidationResponse="checkIfValidField"
             v-model="name"
           />
         </div>
 
         <div class="form-group">
-          <InputAge @ageValidationResponse="checkIfAgeValid" v-model="name" />
+          <InputAge @ageValidationResponse="checkIfValidField" v-model="name" />
         </div>
 
         <button
@@ -58,19 +58,24 @@ export default {
       }
     });
 
-    function checkIfNameValid(errors) {
-      if (errors[0] === null) {
-        validName.value = true;
-      } else {
-        validName.value = false;
-      }
-    }
-
-    function checkIfAgeValid(errors) {
-      if (errors[0] === null) {
-        validAge.value = true;
-      } else {
-        validAge.value = false;
+    function checkIfValidField(value, field, errors) {
+      console.log(value, field, errors)
+      switch (field) {
+        case "name":
+          console.log('name')
+          if (errors[0] === null) {
+            validName.value = true;
+          } else {
+            validName.value = false;
+          }
+          break;
+        case "age":
+          if (errors[0] === null) {
+            validAge.value = true;
+          } else {
+            validAge.value = false;
+          }
+          break;
       }
     }
 
@@ -84,8 +89,7 @@ export default {
 
     return {
       buttonClass,
-      checkIfAgeValid,
-      checkIfNameValid,
+      checkIfValidField,
       email,
       isFormValid,
       name,
