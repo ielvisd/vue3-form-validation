@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-group">
-          <InputAge @validationResponse="checkIfValidField" v-model="name" />
+          <InputAge @validationResponse="checkIfValidField" v-model="age" />
         </div>
 
         <button
@@ -42,7 +42,7 @@ export default {
   name: "BaseForm",
   setup() {
     const name = ref("");
-    const email = ref("");
+    const age = ref("");
     let validName = ref(false);
     let validAge = ref(false);
 
@@ -90,7 +90,7 @@ export default {
     return {
       buttonClass,
       checkIfValidField,
-      email,
+      age,
       isFormValid,
       name,
       submitForm

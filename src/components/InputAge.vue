@@ -10,14 +10,14 @@
 
 <script>
 import useInputValidator from "@/features/useInputValidator.js";
-import { ageIsValid } from "@/validators";
+import { ageIsValid, ageMin, ageMax } from "@/validators";
 
 
 export default {
   name: "InputAge",
   setup (props, { emit }) {
     const { input, errors } = useInputValidator(
-      props.value, [ageIsValid(input)],
+      props.value, [ageIsValid(input), ageMin(input), ageMax(input)],
       value => {
         emit("validationResponse", value, 'age', errors.value);
       },

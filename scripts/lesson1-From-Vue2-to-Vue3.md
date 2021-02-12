@@ -46,9 +46,20 @@
 
 > The value of this `input` variable will be something we'll return from a to-be-defined composition function `useInputValidator`. This function will handle all the common validation logic in our form.
 
-> We'll pass in the `value` prop to this method (currently undefined), this will be our starting value, and the second argument will be a callback function that returns the validated input value. Let's use this callback to emit the input and any errors as an event. 
+> We'll pass in the `value` prop to this method (currently undefined), this will be our starting value, and the second argument will an array of validator functtions that we will soon write and the third will be a callback function that returns the validated input value. Let's use this callback to emit the input and any errors as an event. 
 
 ## Input Validator
+> The module file, `useInputValidator` exports a function. We just saw it will need three arguments - the `value` prop received from the baseForm, `startVal` here, the validators, and a callback method we'll call `onValidate`.
 
+> This function needs to return our input so we need to define that using `ref` to a value provided by the prop, this is initialized to `undefined` for our use case. 
+
+> We will now set up the `watch` API which is the same as the component `watch` property in Vue 2. We will use this to process the validaiton functions. Let's use the map method of the validators array, passing in the current value of the input to each validator method.
+
+> In the next section we will set up these validators but for now know that we are setting an error message if a validator fails and null otherwise. 
 
 ## Validators
+> Ok, almost done. Let's setup our first validator. Let's create a `validators.js` file which is where we will track all of our validations. Let's take the logic in our `validName` method and move it to this validator file. 
+
+> Now let's return to our `InputName` component and hook it up to our validators to bring it all home. 
+
+> If it all went according to plan we should now have an `InputName` component that is being validated using Vue 3. Nice! 
