@@ -10,13 +10,8 @@
         autocomplete="off"
       >
         <InputName/>
-        <!-- <div class="form-group">
-          <label class="label" for="age">
-            Age:
-            <input type="text" id="age" class="input-field" v-model="form.age"/>
-            <p v-if="!ageIsValid" class="error-message">The age field is invalid</p>
-          </label>
-        </div> -->
+        <InputAge/>
+
         <button class="form-button" type="submit">Submit</button>
       </form>
 
@@ -26,6 +21,8 @@
 
 <script>
 import InputName from '@/components/InputName'
+import InputAge from '@/components/InputAge'
+
 import { ref } from 'vue'
 
   export default {
@@ -63,7 +60,8 @@ import { ref } from 'vue'
       };
     },
     components: {
-      InputName
+      InputName,
+      InputAge
     },
     computed: {
       nameIsValid() {
