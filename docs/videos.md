@@ -21,3 +21,9 @@
 - **Title**: Lesson 4: DIY Form Validation in Vue 3 - Refactoring From Vue 2 to Vue 3 - Input Functionality
 - **Description**: We setup our inputName component with the `setup` function from the Composition API and get it ready to send its value to be validated. 
 - **Link**: https://youtu.be/wSvxzJ8DU1c
+
+### Lesson 5
+
+- **Title**: Lesson 5: DIY Form Validation in Vue 3 - useInputValidator Composition Function
+- **Description**: Setup the useInputValidator Composition Function to return check validation functions and return errors. 
+- **Link**: https://youtu.be/8guiXtwejO4

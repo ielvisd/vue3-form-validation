@@ -1,12 +1,23 @@
 # Lesson 5 - Refactoring From Vue 2 to Vue 3 - useInputValidator Composition Function (Script)
 
+> Before we jump into building our Composition Function `useInputValidator`, let's go ahead and import it in our `inputName` component, something I forgot to do in the last video: 
+
+🎉🎉🎉🎉🎉🎉 DEMO 🎉🎉🎉🎉🎉🎉
+
+
 ## Input Validator
 > The module file, `useInputValidator` exports a function. We just saw it will need three arguments - the `value` prop received from the baseForm, `startVal` here, the validators, and a callback method we'll call `onValidate`.
 
 🎉🎉🎉🎉🎉🎉 DEMO 🎉🎉🎉🎉🎉🎉
 
+```
+import useInputValidator from "@/features/useInputValidator.js";
+```
+
+
+
 >`useInputValidator.vue`
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 export default function(startVal, validators, onValidate) {
 }
@@ -16,7 +27,7 @@ export default function(startVal, validators, onValidate) {
 🎉🎉🎉🎉🎉🎉 DEMO 🎉🎉🎉🎉🎉🎉
 
 >`useInputValidator.vue`
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 export default function(startVal, validators, onValidate) {
   const input = ref(startVal);

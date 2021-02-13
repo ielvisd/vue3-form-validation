@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import useInputValidator from "@/features/useInputValidator.js";
+
     export default {
         name: 'InputName',
         setup(props, { emit }) {
