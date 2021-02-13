@@ -26,9 +26,31 @@
 
 <script>
 import InputName from '@/components/InputName'
+import { ref } from 'vue'
 
   export default {
     name: "BaseForm",
+    setup() {
+      const name = ref('')
+
+      function submitForm() {
+
+        console.log('submitForm')
+        // const formIsvalid = this.nameIsValid && this.ageIsvalid;
+
+        // if (formIsvalid) {
+        //   console.log("🗒️ Form Submitted", this.form);
+        // } else {
+        //   console.log("❌ Invalid Form");
+        // }
+
+      }
+
+      return {
+        name,
+        submitForm
+      }
+    },
     props: {
       title: String
     },
@@ -55,17 +77,6 @@ import InputName from '@/components/InputName'
         );
       },
     },
-    methods: {
-      submitForm() {
-        const formIsvalid = this.nameIsValid && this.ageIsvalid;
-
-        if (formIsvalid) {
-          console.log("🗒️ Form Submitted", this.form);
-        } else {
-          console.log("❌ Invalid Form");
-        }
-      }
-    }
   };
 </script>
 

@@ -1,4 +1,4 @@
-# Lesson 3 - Did We Solve Our Problem? (Script)
+# Lesson 8 - Did We Solve Our Problem? (Script)
 
 ## Introduction
 > Now that we have our form built, it's important to step back and ask ourselves if we solved the problem we layed out at the beginning: 
