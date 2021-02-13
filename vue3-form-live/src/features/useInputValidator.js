@@ -5,7 +5,7 @@ export default function(startVal, validators, onValidate) {
     const errors = ref([]);
 
     watch(input, (value) => {
-        errors.value = validators.map((validator) ==> validator(value));
+        errors.value = validators.map((validator) => validator(value));
         onValidate(value);
     })
 
