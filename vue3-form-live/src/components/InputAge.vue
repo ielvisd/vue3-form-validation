@@ -22,7 +22,7 @@ import { ageIsValid } from "@/validators"
                 // useInputValidator takes three inputs, startVal, an array of validators, and an onValidate function
                 useInputValidator(props.value, [ageIsValid(input)], 
                 value => {
-                    emit('validationResponse', value, 'name', errors.value)
+                    emit('validationResponse', value, 'age', errors.value)
                 })
             
 

@@ -9,10 +9,10 @@
         @submit.prevent="submitForm"
         autocomplete="off"
       >
-        <InputName/>
-        <InputAge/>
+        <InputName @validationResponse="checkIfValidField"/>
+        <InputAge @validationResponse="checkIfValidField"/>
 
-        <button class="form-button" type="submit">Submit</button>
+        <button :disabled="!isFormValid"  :class="'form-button' + ' ' + buttonClass" type="submit">Submit</button>
       </form>
 
     </section>
@@ -23,57 +23,72 @@
 import InputName from '@/components/InputName'
 import InputAge from '@/components/InputAge'
 
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
   export default {
     name: "BaseForm",
     setup() {
       const name = ref('')
+      const age = ref('')
+      let validName = ref(false)
+      let validAge = ref(false)
+
+    const buttonClass = computed(() => {
+      if (isFormValid.value) {
+        return "";
+      } else {
+        return "opacity-50";
+      }
+    });
+      
+
+    const isFormValid = computed(() => {
+      return validName.value === true && validAge.value === true;
+    });
 
       function submitForm() {
-
-        console.log('submitForm')
-        // const formIsvalid = this.nameIsValid && this.ageIsvalid;
-
-        // if (formIsvalid) {
-        //   console.log("🗒️ Form Submitted", this.form);
-        // } else {
-        //   console.log("❌ Invalid Form");
-        // }
-
+      if (isFormValid.value) {
+        console.log("🗒️ Form Submitted");
+      } else {
+        console.log("❌ Invalid Form");
       }
+      }
+
+    function checkIfValidField(value, field, errors) {
+      console.log(value, field, errors)
+      switch (field) {
+        case "name":
+          if (errors[0] === null) {
+            validName.value = true;
+          } else {
+            validName.value = false;
+          }
+          break;
+        case "age":
+          if (errors[0] === null) {
+            validAge.value = true;
+          } else {
+            validAge.value = false;
+          }
+          break;
+      }
+    }
 
       return {
         name,
-        submitForm
+        age,
+        buttonClass,
+        submitForm, 
+        checkIfValidField, 
+        isFormValid
       }
     },
     props: {
       title: String
     },
-    data() {
-      return {
-        form: {
-          name: null,
-          age: null
-        }
-      };
-    },
     components: {
       InputName,
       InputAge
-    },
-    computed: {
-      nameIsValid() {
-        return !!this.form.name
-      },
-      ageIsValid() {
-        return (
-          typeof parseInt(this.form.age) === 'number' &&
-          this.form.age > 12 &&
-          this.form.age < 120
-        );
-      },
     },
   };
 </script>

@@ -31,5 +31,13 @@ Description: Compare & refactor a DIY form validation solution in Vue 2 to Vue 3
 - **Description**: Create our first isNameValid validator and hook it up to our inputName component. 
 - **Link**: https://youtu.be/Rij4-tLqD2A
 
+### Lesson 7
+- **Title**: Lesson 7: DIY Form Validation in Vue 3 - Code Reusability
+- **Description**: Add a new `inputAge` component and a new age validator to our form. 
+- **Link**: https://youtu.be/vhRMlcEhayw
 
+### Lesson 8
+- **Title**: Lesson 8: DIY Form Validation in Vue 3 - Review - Did We Solve Our Problems? 
+- **Description**: Review 3 problems. Add a check for entire form. 
+- **Link**: https://youtu.be/5FqgkNQoBEM
 
