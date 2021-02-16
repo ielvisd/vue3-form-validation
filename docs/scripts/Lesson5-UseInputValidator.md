@@ -4,16 +4,13 @@
 
 🎉🎉🎉🎉🎉🎉 DEMO 🎉🎉🎉🎉🎉🎉
 
-
+```
+import useInputValidator from "@/features/useInputValidator.js";
+```
 ## Input Validator
 > The module file, `useInputValidator` exports a function. We just saw it will need three arguments - the `value` prop received from the baseForm, `startVal` here, the validators, and a callback method we'll call `onValidate`.
 
 🎉🎉🎉🎉🎉🎉 DEMO 🎉🎉🎉🎉🎉🎉
-
-```
-import useInputValidator from "@/features/useInputValidator.js";
-```
-
 
 
 >`useInputValidator.vue`
@@ -22,7 +19,7 @@ import { ref } from "vue";
 export default function(startVal, validators, onValidate) {
 }
 
-> This function needs to return our input so we need to define that using `ref` to a value provided by the prop, this is initialized to `undefined` for our use case. 
+> This function needs to return our `input` so we need to define that using `ref` to a value provided by the prop, this is initialized to `undefined` for our use case. We also need to define the `errors` array that will contain any error messages that are returned from the validator functions. 
 
 🎉🎉🎉🎉🎉🎉 DEMO 🎉🎉🎉🎉🎉🎉
 

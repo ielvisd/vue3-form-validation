@@ -1,5 +1,7 @@
 # vue3-form-validation
 
+Vue3 Form Deployed: https://vue3-form-validation.vercel.app
+
 ## Project setup
 ```
 yarn install
